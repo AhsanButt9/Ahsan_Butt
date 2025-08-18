@@ -157,7 +157,10 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', createRipple);
     });
     
-    // Form handling
+    // Initialize EmailJS
+    emailjs.init("3NIzYDkHwmbG_9RRD"); // Replace with your EmailJS public key
+    
+    // Form handling with EmailJS
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -170,19 +173,33 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            // Simulate form submission
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-                
-                // Reset form
-                setTimeout(() => {
-                    contactForm.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                }, 2000);
-            }, 2000);
+            // Send email using EmailJS
+            emailjs.sendForm('service_1h5o96j', 'template_pxxvs7c', this)
+                .then(function() {
+                    // Success
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                    submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+                    
+                    // Reset form after success
+                    setTimeout(() => {
+                        contactForm.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                    }, 2000);
+                }, function(error) {
+                    // Error
+                    console.log('EmailJS Error:', error);
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to Send';
+                    submitBtn.style.background = 'linear-gradient(135deg, #dc3545, #c82333)';
+                    
+                    // Reset button after error
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                });
         });
     }
     
