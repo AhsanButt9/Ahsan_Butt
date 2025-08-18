@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="premium-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <!-- Meta Tags -->
     <meta name="description" content="Premium Shopify Developer specializing in luxury eCommerce stores. 3+ years experience, 15+ successful projects.">
     <meta name="keywords" content="Shopify Developer, eCommerce, Web Design, Luxury Stores">
@@ -271,13 +274,13 @@
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PrinceVibe Luxury Watches">
+                        <img src="watch.jpeg" alt="PrinceVibe Luxury Watches">
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
                                 <h3>PrinceVibe</h3>
                                 <p>Luxury Watch Store</p>
                                 <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link">
+                                    <a href="https://princevibe.store/" class="portfolio-link">
                                         <i class="fas fa-external-link-alt"></i>
                                     </a>
                                 </div>
@@ -402,21 +405,21 @@
                     </div>
                 </div>
                 
-                <form class="contact-form">
+                <form class="contact-form" id="contact-form">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="from_name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="from_email" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="subject">Project Type</label>
-                        <select id="subject" name="subject" required>
+                        <select id="subject" name="project_type" required>
                             <option value="">Select a service</option>
                             <option value="new-store">New Store Development</option>
                             <option value="redesign">Store Redesign</option>
