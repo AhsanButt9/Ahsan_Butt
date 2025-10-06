@@ -68,8 +68,26 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-brand {
     display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-text {
+    display: flex;
     flex-direction: column;
-    gap: 2px;
+    line-height: 1;
+}
+
+.profile-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #667eea;
+}
+
+@media (max-width: 768px) {
+    .profile-image { width: 50px; height: 50px; }
 }
 
 .brand-name {
@@ -144,6 +162,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
     overflow: hidden;
+    margin-top: 50px;
 }
 
 .hero::before {
